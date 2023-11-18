@@ -4,7 +4,9 @@ function Home() {
 
   return (
     <>
-      <NavBar />
+      <div style={{ backgroundImage: "url(/assets/hero_image.jpg)" }}>
+        <NavBar />
+      </div>
       <MainBody />
     </>
   )

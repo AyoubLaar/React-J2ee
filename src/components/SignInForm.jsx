@@ -16,6 +16,19 @@ export default function SignInForm() {
                     <label for="Password"><h2>Password</h2></label>
                     <input type="password" id="Password" name="Password" required placeholder="votre password" />
                 </Column>
+                <Column width={"100%"}>
+                    <h2>Vous êtes </h2>
+                    <Row gap={"10px"}  >
+                        <Row gap={"5px"} breakpoint={0}>
+                            <input type="radio" name="role" id="Patient" value="patient" required style={{ padding: 0 }} />
+                            <label for="Patient">Patient</label>
+                        </Row>
+                        <Row gap={"5px"} breakpoint={0}>
+                            <input type="radio" name="role" id="Medecin" value="medecin" required style={{ padding: 0 }} />
+                            <label for="Medecin">Medecin</label>
+                        </Row>
+                    </Row>
+                </Column>
                 <ButtonOutlined text={"Sign in "} varient={"main"} />
             </Column>
         </form >

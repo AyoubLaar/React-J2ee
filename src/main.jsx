@@ -4,6 +4,9 @@ import Home from './Pages/Home.jsx'
 import SignIn from './Pages/SignIn.jsx';
 import SignUp from './Pages/SignUp.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
+import RendezVous from './Pages/RendezVous.jsx';
+import SignUpMedecin from './Pages/SingUpMedecin.jsx';
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -24,6 +27,14 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: <SearchPage />
+  },
+  {
+    path: "/rendezvous/:id",
+    element: <RendezVous />
+  },
+  {
+    path: "/medecin/signup",
+    element: <SignUpMedecin />
   }
 ]);
 import 'bootstrap/dist/css/bootstrap.css'
