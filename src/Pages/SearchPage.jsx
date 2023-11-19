@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import SearchForm from "../components/SearchForm";
 import Column from "../components/Column";
 import DoctorCard from "../components/DoctorCard";
+import { colors } from "../Parameters";
 
 export default function SearchPage() {
     const moroccoDoctorData = [
@@ -48,8 +49,8 @@ export default function SearchPage() {
     ];
     return (
         <>
-            <Navbar />
-            <Column alignItems={"center"} width={"100%"}>
+            <Navbar backgroundColor={colors.navbar} />
+            <Column alignItems={"center"} width={"100%"} padding={"30px"}>
                 <Column gap={"20px"} alignItems={"center"}>
                     <SearchForm />
                     <Column width={"100%"} gap="10px">

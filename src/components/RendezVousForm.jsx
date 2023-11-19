@@ -1,6 +1,6 @@
 import Column from "./Column";
 import Row from "./Row";
-import ButtonOutlined from "./ButtonOutlined";
+import Button from "./Button";
 import { colors } from "../Parameters";
 import React from "react";
 
@@ -34,8 +34,12 @@ export default function RendezVousForm() {
         { hour: 23, available: true },
     ];
 
+    function handleClick(e) {
+        setHeure(heures[index]);
+    }
+
     return <>
-        <form style={{ height: "auto", width: "fit-content", padding: "50px ", borderRadius: "5px", border: "2px solid black" }}>
+        <form style={{ height: "auto", width: "fit-content", padding: "50px ", borderRadius: "5px", border: "2px solid black", backgroundColor: "white" }}>
             <Column justifyContent={"center"} alignItems={"center"} gap={"30px"}>
                 <h1><b>Prendre rendez-vous</b></h1>
                 <Column>
@@ -47,9 +51,7 @@ export default function RendezVousForm() {
                     <Row gap={"10px"}>
                         <select name="heure">
                             {heures.map((heure, index) =>
-                                <option value={heure.hour} style={{ color: heure.available ? colors.neutral : colors.bad }} onClick={(e) => {
-                                    setHeure(heures[index]);
-                                }}>
+                                <option value={heure.hour} style={{ color: heure.available ? colors.good : colors.bad }} onClick={handleClick}>
                                     {heure.hour}
                                 </option>
                             )}
@@ -57,7 +59,7 @@ export default function RendezVousForm() {
                         {heure != null ? <span style={{ color: heure.available ? colors.good : colors.bad }}>{heure.available ? "disponible" : "undisponible"}</span> : <></>}
                     </Row>
                 </Column>
-                <ButtonOutlined disabled={heure == null || !heure.available} text={"submit"} varient={"main"} />
+                <Button type="outlined" disabled={heure == null || !heure.available} text={"submit"} varient={"main"} />
             </Column>
         </form >
     </>;

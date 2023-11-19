@@ -1,13 +1,15 @@
-import NavBar from '../components/Navbar'
 import MainBody from '../components/MainBody'
+import Column from '../components/Column'
+import HeroElement from '../components/HeroElement'
 function Home() {
 
   return (
     <>
-      <div style={{ backgroundImage: "url(/assets/hero_image.jpg)" }}>
-        <NavBar />
-      </div>
-      <MainBody />
+      <Column gap={"50px"} padding={" 0 0 50px 0"}>
+        <HeroElement />
+        <MainBody />
+      </Column>
+
     </>
   )
 }

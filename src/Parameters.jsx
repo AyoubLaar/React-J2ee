@@ -1,2 +1,2 @@
-export const colors = { main: "#00BBA6", highlight: "#FFFF00", black: "black", good: "green", neutral: "navy", bad: "red" };
+export const colors = { main: "#00BBA6", secondary: "pink", highlight: "red", black: "black", good: "green", neutral: "navy", bad: "red", navbar: "#120D31" };
 export const lightcolors = { main: "rgb(0, 0, 128,0.1)", highlight: "rgb(255,0,0,0.1)" };

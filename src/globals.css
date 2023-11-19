@@ -4,6 +4,10 @@
     box-sizing: border-box
 }
 
+:root {
+    --main_color: #00BBA6
+}
+
 body,
 #root {
     width: 100%;
@@ -12,6 +16,8 @@ body,
     padding: 0;
     margin: 0;
 }
+
+
 
 body {
     background-color: white;
@@ -61,8 +67,6 @@ label:hover {
 
 input:focus {
     outline: none;
-    background-color: rgb(0, 0, 0, .3);
-
 }
 
 button {

@@ -1,11 +1,14 @@
 import { Formik } from "formik";
 import Row from "./Row";
 import Column from "./Column";
-import ButtonOutlined from "../components/ButtonOutlined"
+import Button from "./Button"
 
 export default function SignInForm() {
     return <>
-        <form style={{ height: "auto", padding: "50px ", borderRadius: "5px", border: "2px solid black" }}>
+        <form
+            method="post"
+            action="http://localhost:8080/api/v1/patient/signin"
+            style={{ height: "auto", padding: "50px ", borderRadius: "5px", border: "2px solid black", backgroundColor: "white" }}>
             <Column justifyContent={"center"} alignItems={"center"} gap={"30px"}>
                 <h1><b>Sign in</b> </h1>
                 <Column>
@@ -29,7 +32,7 @@ export default function SignInForm() {
                         </Row>
                     </Row>
                 </Column>
-                <ButtonOutlined text={"Sign in "} varient={"main"} />
+                <Button type="filled" text={"Sign in "} varient={"main"} />
             </Column>
         </form >
     </>

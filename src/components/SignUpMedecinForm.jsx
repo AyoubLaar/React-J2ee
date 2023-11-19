@@ -1,13 +1,13 @@
 import { Formik } from "formik";
 import Row from "./Row";
 import Column from "./Column";
-import ButtonOutlined from "../components/ButtonOutlined"
+import Button from "./Button"
 
 export default function SignUpMedecinForm() {
     return <>
-        <form style={{ height: "auto", padding: "50px 20px", borderRadius: "5px", border: "2px solid black" }}>
+        <form style={{ height: "auto", padding: "50px 20px", borderRadius: "5px", border: "2px solid black", backgroundColor: "white" }}>
             <Column gap={"25px"} alignItems={"center"}>
-                <h1><b>Sign up</b> </h1>
+                <h1><b>Demande d'inscription</b> </h1>
                 <Row gap={"30px"}>
                     <Column gap={"10px"}>
                         <Column>
@@ -27,8 +27,8 @@ export default function SignUpMedecinForm() {
                             <input type="text" id="ville" name="ville" required placeholder="Ville de votre cabinet" />
                         </Column>
                         <Column width={"100%"}>
-                            <label for="code"><h2>Ville</h2></label>
-                            <input type="text" id="ville" name="ville" required placeholder="Ville de votre cabinet" />
+                            <label for="code"><h2>Code Médecin</h2></label>
+                            <input type="text" id="code" name="code" required placeholder="Votre code de medecin" />
                         </Column>
 
                         <Column height={"100%"}>
@@ -69,7 +69,7 @@ export default function SignUpMedecinForm() {
                         </Column>
                     </Column>
                 </Row >
-                <ButtonOutlined text={"Sign up"} varient={"main"} />
+                <Button type="filled" text={"Soumettre demande"} varient={"main"} />
             </Column >
         </form >
     </>

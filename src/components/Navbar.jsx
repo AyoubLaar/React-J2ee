@@ -1,12 +1,14 @@
-import ButtonFilled from "./ButtonFilled";
+import Button from "./Button";
 import { colors } from "../Parameters";
 import React from "react";
 
-function Navbar() {
+function Navbar({ backgroundColor, position }) {
+  if (backgroundColor == undefined) backgroundColor = "none";
+  if (position == undefined) position = "sticky";
   const [windowstate, setWindow] = React.useState(null);
   React.useEffect(() => {
+    console.log(backgroundColor + position)
     setWindow(window.innerWidth);
-    console.log(window.innerWidth);
     window.addEventListener('resize', () => {
       setWindow(window.innerWidth)
     });
@@ -20,19 +22,19 @@ function Navbar() {
   return (
     <header style={{
       height: "fit-content", display: "flex", flexDirection: "row",
-      position: "sticky", top: 0, left: 0, right: 0, padding: "20px"
-      , backgroundColor: "white"
+      position: position, top: 0, left: 0, right: 0, padding: "20px"
+      , backgroundColor: backgroundColor, zIndex: "1"
     }}>
       <a href="/" style={{ textDecoration: "none" }}>
         <span style={{
-          color: colors.main,
+          color: "white",
           fontSize: "32px",
           fontWeight: "700"
         }}>Logo</span>
       </a>
       <div style={{ flexGrow: 1 }}></div>
       <nav style={{ display: "flex", gap: "10px" }}>
-        {windowstate > 700 ? buttons.map(props => <ButtonFilled {...props} />) : <button>navbar</button>}
+        {windowstate > 700 ? buttons.map(props => <Button type="outlined" {...props} style={{ background: "none" }} />) : <Button varient="main" text={"navbar"} />}
       </nav>
     </header>
   );
