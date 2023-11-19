@@ -2,6 +2,7 @@ import { Formik } from "formik";
 import Row from "./Row";
 import Column from "./Column";
 import Button from "./Button"
+import { colors } from "../Parameters";
 
 export default function SignInForm() {
     return <>
@@ -32,7 +33,7 @@ export default function SignInForm() {
                         </Row>
                     </Row>
                 </Column>
-                <Button type="filled" text={"Sign in "} varient={"main"} />
+                <Button type="filled" text={"Sign in "} varient={"main"} padding={"5px 20px"} />
             </Column>
         </form >
     </>

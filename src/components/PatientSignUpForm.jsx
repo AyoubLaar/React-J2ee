@@ -12,24 +12,27 @@ export default function PatientSignUpForm() {
         data.forEach(function (value, key) {
             json[key] = value;
         });
-        if (json.password != json.confirmedPassword) {
+        if (json["password"] != json["confirmedPassword"]) {
             alert("Password non égaux");
+            return false;
+        } else {
+            fetch("http://localhost:8080/api/v1/patient/signup", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(json)
+            }).then(res => {
+                return res.json();
+            }).then((data) => {
+                console.log(data);
+                window.localStorage.setItem("auth_token", data);
+                window.location = "/";
+            }).catch((error) => {
+                console.log(error);
+                alert("erreur de la requête!");
+            })
         }
-        fetch("http://localhost:8080/api/v1/patient/signup", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(json)
-        }).then(res => {
-            if (!res.ok) throw new Error();
-        }).then((data) => {
-            window.location = "/";
-            window.localStorage.setItem("auth_token", data);
-        }).catch((error) => {
-            console.log(error);
-            alert("erreur de la requête!");
-        })
     }
 
     return <>

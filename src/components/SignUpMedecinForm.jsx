@@ -4,8 +4,35 @@ import Column from "./Column";
 import Button from "./Button"
 
 export default function SignUpMedecinForm() {
+    function handlesubmit(e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const json = {};
+        data.forEach(function (value, key) {
+            json[key] = value;
+        });
+        if (json.password != json.confirmedPassword) {
+            alert("Password non égaux");
+        }
+        fetch("http://localhost:8080/api/v1/patient/signup", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(json)
+        }).then(res => {
+            if (!res.ok) throw new Error();
+        }).then((data) => {
+            window.location = "/";
+            window.localStorage.setItem("auth_token", data);
+        }).catch((error) => {
+            console.log(error);
+            alert("erreur de la requête!");
+        })
+    }
+
     return <>
-        <form style={{ height: "auto", padding: "30px 20px", borderRadius: "5px", border: "2px solid black", backgroundColor: "white" }}>
+        <form style={{ height: "auto", padding: "30px 20px", borderRadius: "5px", border: "2px solid black", backgroundColor: "white" }} onSubmit={handlesubmit}>
             <Column gap={"25px"} alignItems={"center"}>
                 <h1><b>Demande d'inscription</b> </h1>
                 <Column gap={"15px"}>

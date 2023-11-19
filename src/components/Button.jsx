@@ -7,10 +7,10 @@ const Button = ({ text, varient, href, style, onclick, padding, type, color }) =
         return (
             href == undefined ?
                 <button onClick={onclick} style={{
-                    backgroundColor: "white", border: "solid 2px " + colors[varient], borderRadius: "5px", color: color, padding: padding, ...style
+                    backgroundColor: "white", border: "solid 2px " + colors[varient], color: color, padding: padding, ...style
                 }} > {text}</button>
                 : <a href={href}><button onClick={onclick} style={{
-                    backgroundColor: "white", border: "solid 2px " + colors[varient], borderRadius: "5px", color: color, padding: padding, ...style
+                    backgroundColor: "white", border: "solid 2px " + colors[varient], color: color, padding: padding, ...style
                 }} >{text}</button></a>
         )
     } else
