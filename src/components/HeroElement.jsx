@@ -11,13 +11,13 @@ export default function HeroElement() {
         });
     }, [])
     return <div style={{
-        background: "linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ),url('/../src/assets/rsz_pexels-thirdman-7659869.jpg')",
+        background: "linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.5) ),url('/../src/assets/teleconsultation_avec_medecin2.jpg')",
         width: "100%", minHeight: "100vh", position: "relative", height: "fit-content", padding: "100px 0"
         , display: "flex", justifyContent: "center", alignItems: "center", zIndex: "0", backgroundPosition: "center"
-        , backgroundSize: "cover"
+        , backgroundSize: "cover", backgroundRepeat: "no-repeat"
     }}>
         <Navbar key={scroll == 0} position={scroll == 0 ? "absolute" : "fixed"} backgroundColor={scroll == 0 ? "none" : "#120D31"} />
-        <Column gap={"25px"} padding={"10px"} alignItems={"center"} >
+        <Column gap={"25px"} padding={"10px"} alignItems={"center"} style={{ backgroundColor: "rgb(7,5,19,0.5)", padding: "25px", borderRadius: "5px" }}>
             <h1 style={{ fontWeight: "700", color: "white", textAlign: "center" }}>Choisir votre médecin</h1>
             <SearchFormWhite />
         </Column>

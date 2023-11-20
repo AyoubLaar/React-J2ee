@@ -35,7 +35,8 @@ const router = createBrowserRouter([
   {
     path: "/medecin/signup",
     element: <SignUpMedecin />
-  }
+  },
+
 ]);
 import 'bootstrap/dist/css/bootstrap.css'
 import "./globals.css"

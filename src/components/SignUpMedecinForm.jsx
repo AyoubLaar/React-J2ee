@@ -1,4 +1,3 @@
-import { Formik } from "formik";
 import Row from "./Row";
 import Column from "./Column";
 import Button from "./Button"
@@ -41,7 +40,7 @@ export default function SignUpMedecinForm() {
         }).then((data) => {
             alert("Demande effectué avec succés!");
             window.location = "/";
-            window.localStorage.setItem("auth_token", data);
+            window.localStorage.setItem("auth_token", data.token);
         }).catch((error) => {
             console.log(error);
             alert("erreur de la requête!");

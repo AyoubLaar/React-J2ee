@@ -17,7 +17,7 @@ export default function DoctorCard({ id, sexe, nom, prenom, addresse, ville }) {
                     <span><b>Prénom :</b> {prenom}</span>
                     <span><b>Addresse :</b> {addresse}</span>
                     <span><b>ville :</b> {ville}</span>
-                    <Button text={"prendre rendez-vous"} color="white" type="outlined" href={"/rendezvous/" + id} varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px", fontSize: "16px" }} />
+                    <Button text={"prendre rendez-vous"} color="white" type="outlined" href={"/rendezvous/" + id} varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
                 </Column>
             </Row>
         </div >

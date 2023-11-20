@@ -27,7 +27,7 @@ function Navbar({ backgroundColor, position }) {
     }}>
       <a href="/" style={{ textDecoration: "none" }}>
         <span style={{
-          color: "white",
+          color: colors.main,
           fontSize: "32px",
           fontWeight: "700"
         }}>Logo</span>
