@@ -34,7 +34,7 @@ export default function RendezVousForm() {
         { hour: 23, available: true },
     ];
 
-    function handleClick(e) {
+    function handleClick(index) {
         setHeure(heures[index]);
     }
 
@@ -51,7 +51,7 @@ export default function RendezVousForm() {
                     <Row gap={"10px"}>
                         <select name="heure">
                             {heures.map((heure, index) =>
-                                <option value={heure.hour} style={{ color: heure.available ? colors.good : colors.bad }} onClick={handleClick}>
+                                <option value={heure.hour} style={{ color: heure.available ? colors.good : colors.bad }} onClick={() => handleClick(index)}>
                                     {heure.hour}
                                 </option>
                             )}
@@ -59,7 +59,7 @@ export default function RendezVousForm() {
                         {heure != null ? <span style={{ color: heure.available ? colors.good : colors.bad }}>{heure.available ? "disponible" : "undisponible"}</span> : <></>}
                     </Row>
                 </Column>
-                <Button type="outlined" disabled={heure == null || !heure.available} text={"submit"} varient={"main"} />
+                <Button text={"soumettre demande"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
             </Column>
         </form >
     </>;

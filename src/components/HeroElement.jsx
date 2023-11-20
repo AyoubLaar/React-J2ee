@@ -12,7 +12,7 @@ export default function HeroElement() {
     }, [])
     return <div style={{
         background: "linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ),url('/../src/assets/rsz_pexels-thirdman-7659869.jpg')",
-        width: "100%", minHeight: "100vh", minHeight: "100vh", position: "relative", height: "fit-content", padding: "100px 0"
+        width: "100%", minHeight: "100vh", position: "relative", height: "fit-content", padding: "100px 0"
         , display: "flex", justifyContent: "center", alignItems: "center", zIndex: "0", backgroundPosition: "center"
         , backgroundSize: "cover"
     }}>

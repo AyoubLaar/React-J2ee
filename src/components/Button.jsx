@@ -1,7 +1,7 @@
 import { colors } from "../Parameters";
 
 const Button = ({ text, varient, href, style, onclick, padding, type, color }) => {
-    if (padding == undefined) padding = "10px";
+    if (padding == undefined) padding = "10px 20px";
     if (color == undefined) color = colors[varient];
     if (type == "outlined") {
         return (

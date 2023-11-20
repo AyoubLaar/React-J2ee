@@ -3,6 +3,7 @@ import Column from "./Column";
 import doctor_man from "../assets/doctor_man.svg"
 import doctor_woman from "../assets/doctor_woman.svg"
 import Button from "../components/Button"
+import { colors } from "../Parameters";
 
 export default function DoctorCard({ id, sexe, nom, prenom, addresse, ville }) {
     return (
@@ -16,7 +17,7 @@ export default function DoctorCard({ id, sexe, nom, prenom, addresse, ville }) {
                     <span><b>Prénom :</b> {prenom}</span>
                     <span><b>Addresse :</b> {addresse}</span>
                     <span><b>ville :</b> {ville}</span>
-                    <Button text={"prendre un rendez-vous"} href={"/rendezvous/" + id} varient={"main"} style={{ fontSize: "16px" }} />
+                    <Button text={"prendre rendez-vous"} color="white" type="outlined" href={"/rendezvous/" + id} varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px", fontSize: "16px" }} />
                 </Column>
             </Row>
         </div >

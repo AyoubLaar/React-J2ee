@@ -1,5 +1,4 @@
 import Button from "./Button";
-import { colors } from "../Parameters";
 
 export default function MainBody() {
     return (
@@ -17,8 +16,7 @@ export default function MainBody() {
                 <h1 style={{ textAlign: "center" }}><b>Comment ca marche</b> </h1>
                 <p style={
                     { textAlign: "center" }
-                }>Créez un compte, fixez un rendez-vous, le médecin l'accepte, puis la téléconsultation a lieu à l'heure convenue. <b>Simple,</b> <b>rapide,</b> et <b>accessible.</b></p>
+                }>Choisir le médecin , Créez un compte, fixez un rendez-vous, le médecin l'accepte, puis la téléconsultation a lieu à l'heure convenue. <b>Simple,</b> <b>rapide,</b> et <b>accessible.</b></p>
             </section>
-            <Button text={"Fixer un rendez-vous"} type="filled" varient={"main"} href={"/search"} />
         </main >);
 }

@@ -2,8 +2,23 @@ import { Formik } from "formik";
 import Row from "./Row";
 import Column from "./Column";
 import Button from "./Button"
+import { colors } from "../Parameters";
+import React from "react";
 
 export default function SignUpMedecinForm() {
+    const [specialites, setSpecialites] = React.useState([]);
+    React.useEffect(() => {
+        fetch("http://localhost:8080/api/v1/specialites/getAll", {
+            method: "get"
+        }).then((res) => {
+            if (!res.ok) throw new Error();
+            return res.json();
+        }).then(data => {
+            setSpecialites(data.map(specialite => { return { specialite: specialite, chosen: false }; }));
+        }).catch(() => {
+            alert("error connection");
+        })
+    }, [])
     function handlesubmit(e) {
         e.preventDefault();
         const data = new FormData(e.target);
@@ -11,6 +26,7 @@ export default function SignUpMedecinForm() {
         data.forEach(function (value, key) {
             json[key] = value;
         });
+        json["specialites"] = specialites;
         if (json.password != json.confirmedPassword) {
             alert("Password non égaux");
         }
@@ -23,6 +39,7 @@ export default function SignUpMedecinForm() {
         }).then(res => {
             if (!res.ok) throw new Error();
         }).then((data) => {
+            alert("Demande effectué avec succés!");
             window.location = "/";
             window.localStorage.setItem("auth_token", data);
         }).catch((error) => {
@@ -31,7 +48,7 @@ export default function SignUpMedecinForm() {
         })
     }
 
-    return <>
+    return specialites.length == 0 ? <></> : <>
         <form style={{ height: "auto", padding: "30px 20px", borderRadius: "5px", border: "2px solid black", backgroundColor: "white" }} onSubmit={handlesubmit}>
             <Column gap={"25px"} alignItems={"center"}>
                 <h1><b>Demande d'inscription</b> </h1>
@@ -102,7 +119,7 @@ export default function SignUpMedecinForm() {
                         </Column>
                     </Row>
                 </Column>
-                <Button type="filled" text={"Soumettre demande"} varient={"main"} />
+                <Button text={"Soumettre demande"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
             </Column >
         </form >
     </>

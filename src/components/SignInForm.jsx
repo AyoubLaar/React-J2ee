@@ -33,7 +33,7 @@ export default function SignInForm() {
                         </Row>
                     </Row>
                 </Column>
-                <Button type="filled" text={"Sign in "} varient={"main"} padding={"5px 20px"} />
+                <Button text={"Sign in"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
             </Column>
         </form >
     </>

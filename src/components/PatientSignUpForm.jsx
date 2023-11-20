@@ -1,8 +1,8 @@
-import { Formik } from "formik";
 import Row from "./Row";
 import Column from "./Column";
 import Button from "./Button"
 import React from "react";
+import { colors } from "../Parameters";
 
 export default function PatientSignUpForm() {
     function handlesubmit(e) {
@@ -93,7 +93,7 @@ export default function PatientSignUpForm() {
                         </Column>
                     </Row>
                 </Column>
-                <Button text={"Sign up"} varient={"main"} padding={"5px 25px"} />
+                <Button text={"sign up"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
             </Column >
         </form >
     </>

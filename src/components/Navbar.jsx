@@ -34,7 +34,7 @@ function Navbar({ backgroundColor, position }) {
       </a>
       <div style={{ flexGrow: 1 }}></div>
       <nav style={{ display: "flex", gap: "10px" }}>
-        {windowstate > 700 ? buttons.map(props => <Button color="white" type="outlined" {...props} style={{ background: "none" }} />) : <Button varient="main" text={"navbar"} />}
+        {windowstate > 700 ? buttons.map(props => <Button color="white" type="outlined" {...props} style={{ background: colors.navbar, borderRadius: "5px" }} />) : <Button varient="main" text={"navbar"} />}
       </nav>
     </header>
   );

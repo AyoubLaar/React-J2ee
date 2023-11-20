@@ -22,7 +22,7 @@ export default function SearchForm() {
                     </Column>
                 </Row>
                 <div >
-                    <Button text={"search"} type="filled" varient={"main"} padding={"5px 50px"} />
+                    <Button text={"Search"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
                 </div>
             </Column>
         </form >

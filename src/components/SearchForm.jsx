@@ -1,7 +1,7 @@
 import Button from "./Button";
 import Column from "../components/Column";
 import Row from "../components/Row";
-
+import { colors } from "../Parameters";
 
 export default function SearchForm() {
     return (
@@ -20,7 +20,7 @@ export default function SearchForm() {
                     <input type="text" id="specialty" name="specialty" required placeholder="Spécialité du docteur" />
                 </Column>
                 <div >
-                    <Button type="outlined" text={"search"} varient={"main"} />
+                    <Button text={"Search"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
                 </div>
             </Row>
         </form >
