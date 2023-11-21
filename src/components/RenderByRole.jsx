@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function RenderIfNotAuthentified({ children }) {
+export default function RenderByRole({ unauthorized, patient, medecin, admin }) {
     const sessionId = window.localStorage.getItem("token");
-    const [render, setRender] = React.useState(false);
+    const [role, setRole] = React.useState(false);
     React.useEffect(() => {
         fetch("http://localhost:8080/api/v1/verification/verifysession", {
             method: "get",
@@ -12,14 +12,16 @@ export default function RenderIfNotAuthentified({ children }) {
         }).then(res => {
             return res.text();
         }).then((role) => {
-            console.log(role);
-            if (role == "UNAUTHORIZED") {
-                setRender(true);
-                window.localStorage.removeItem("token");
-            }
+            setRole(role);
         }).catch((e) => {
         })
     }, [])
 
-    return render ? <>{children}</> : <></>;
+    switch (role) {
+        case "UNAUTHORIZED": return <>{unauthorized}</>;
+        case "patient": return <>{patient}</>;
+        case "medecin": return <>{medecin}</>;
+        case "admin": return <>{admin}</>;
+        default: return <>{role}</>
+    }
 }

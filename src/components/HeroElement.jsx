@@ -16,7 +16,7 @@ export default function HeroElement() {
         , display: "flex", justifyContent: "center", alignItems: "center", zIndex: "0", backgroundPosition: "center"
         , backgroundSize: "cover", backgroundRepeat: "no-repeat"
     }}>
-        <Navbar key={scroll == 0} position={scroll == 0 ? "absolute" : "fixed"} backgroundColor={scroll == 0 ? "none" : "#120D31"} />
+        <Navbar />
         <Column gap={"25px"} padding={"10px"} alignItems={"center"} style={{ backgroundColor: "rgb(7,5,19,0.5)", padding: "25px", borderRadius: "5px" }}>
             <h1 style={{ fontWeight: "700", color: "white", textAlign: "center" }}>Choisir votre médecin</h1>
             <SearchFormWhite />
