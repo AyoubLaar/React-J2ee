@@ -12,8 +12,11 @@ export default function RenderByRole({ unauthorized, patient, medecin, admin }) 
         }).then(res => {
             return res.text();
         }).then((role) => {
+            if (role == "UNAUTHORIZED") throw new Error();
             setRole(role);
         }).catch((e) => {
+            window.localStorage.removeItem("token");
+            setRole("UNAUTHORIZED");
         })
     }, [])
 

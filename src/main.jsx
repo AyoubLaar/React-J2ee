@@ -6,7 +6,7 @@ import SignUp from './Pages/SignUp.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
 import RendezVous from './Pages/RendezVous.jsx';
 import SignUpMedecin from './Pages/SingUpMedecin.jsx';
-import StickyHeadTable from "./components/TableEspaceClient.jsx"
+//import StickyHeadTable from "./components/TableEspaceClient.jsx"
 
 import {
   createBrowserRouter,
@@ -33,10 +33,10 @@ const router = createBrowserRouter([
     path: "/rendezvous/:id",
     element: <RendezVous />
   },
-  {
-    path: "/Client/table",
-    element: <StickyHeadTable />
-  },
+  /* {
+     path: "/Client/table",
+     element: <StickyHeadTable />
+   },*/
   {
     path: "/medecin/signup",
     element: <SignUpMedecin />
