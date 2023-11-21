@@ -33,6 +33,10 @@ const router = createBrowserRouter([
     element: <RendezVous />
   },
   {
+    path: "/Client/table",
+    element: <StickyHeadTable />
+  },
+  {
     path: "/medecin/signup",
     element: <SignUpMedecin />
   },
