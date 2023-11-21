@@ -6,6 +6,7 @@ import SignUp from './Pages/SignUp.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
 import RendezVous from './Pages/RendezVous.jsx';
 import SignUpMedecin from './Pages/SingUpMedecin.jsx';
+import StickyHeadTable from "./components/TableEspaceClient.jsx"
 
 import {
   createBrowserRouter,
