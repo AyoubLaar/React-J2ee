@@ -74,8 +74,8 @@ export default function StickyHeadTable() {
 
   return (
     <>
-      <Navbar backgroundColor={colors.navbar}/>
-      <div >
+      <Navbar /> {/* Adding the Navbar component */}
+      <div style={{ paddingTop: '64px' }}> {/* Adjust the padding top as needed */}
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
