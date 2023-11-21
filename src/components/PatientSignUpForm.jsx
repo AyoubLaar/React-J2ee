@@ -24,10 +24,10 @@ export default function PatientSignUpForm() {
                 body: JSON.stringify(json)
             }).then(res => {
                 if (!res.ok) throw new Error("status code : " + res.status);
-                return res.json();
+                return res.text();
             }).then((data) => {
                 console.log(data);
-                window.localStorage.setItem("auth_token", data);
+                window.localStorage.setItem("token", data);
                 window.location = "/";
             }).catch((error) => {
                 console.log(error);

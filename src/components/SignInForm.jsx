@@ -5,20 +5,48 @@ import Button from "./Button"
 import { colors } from "../Parameters";
 
 export default function SignInForm() {
+    function handlesubmit(e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        data.delete("role");
+        const json = {};
+        data.forEach(function (value, key) {
+            json[key] = value;
+        });
+        console.log(json);
+        fetch("http://localhost:8080/api/v1/patient/signin", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(json)
+        })
+            .then(res => {
+                if (!res.ok) throw new Error();
+                return res.text();
+            })
+            .then(token => {
+                console.log(data);
+                window.localStorage.setItem("token", token);
+                window.history.go(-1);
+            })
+            .catch(e => {
+                alert("données invalides !");
+            })
+    }
     return <>
         <form
-            method="post"
-            action="http://localhost:8080/api/v1/patient/signin"
+            onSubmit={handlesubmit}
             style={{ height: "auto", padding: "50px ", borderRadius: "5px", border: "2px solid black", backgroundColor: "white" }}>
             <Column justifyContent={"center"} alignItems={"center"} gap={"30px"}>
                 <h1><b>Sign in</b> </h1>
                 <Column>
                     <label for="email"><h2>Login</h2></label>
-                    <input type="email" id="email" name="email" required placeholder="votre login" />
+                    <input type="email" id="email" name="login" required placeholder="votre login" />
                 </Column>
                 <Column>
                     <label for="Password"><h2>Password</h2></label>
-                    <input type="password" id="Password" name="Password" required placeholder="votre password" />
+                    <input type="password" id="Password" name="password" required placeholder="votre password" />
                 </Column>
                 <Column width={"100%"}>
                     <h2>Vous êtes </h2>

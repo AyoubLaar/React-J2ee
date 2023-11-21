@@ -1,6 +1,8 @@
 import Button from "./Button";
 import { colors } from "../Parameters";
 import React from "react";
+import RenderIfNotAuthentified from "./RenderIfNotAuthentified";
+import RenderIfAuthentifiedPatient from "./RenderIfAuthentifiedPatient";
 
 function Navbar({ backgroundColor, position }) {
   if (backgroundColor == undefined) backgroundColor = "none";
@@ -13,7 +15,22 @@ function Navbar({ backgroundColor, position }) {
       setWindow(window.innerWidth)
     });
   }, [])
-  const buttons = [
+  const unauthorized_buttons = [
+    { text: "Vous êtes medecin ?", varient: "main", href: "/medecin/signup" }
+    , { text: "Sign In", varient: "main", href: "/signin" }
+    , { text: "Sign Up", varient: "main", href: "/patient/signup" }
+  ]
+  const patient_buttons = [
+    { text: "Vous êtes medecin ?", varient: "main", href: "/medecin/signup" }
+    , { text: "Sign In", varient: "main", href: "/signin" }
+    , { text: "Sign Up", varient: "main", href: "/patient/signup" }
+  ]
+  const medecin_buttons = [
+    { text: "Vous êtes medecin ?", varient: "main", href: "/medecin/signup" }
+    , { text: "Sign In", varient: "main", href: "/signin" }
+    , { text: "Sign Up", varient: "main", href: "/patient/signup" }
+  ]
+  const admin_buttons = [
     { text: "Vous êtes medecin ?", varient: "main", href: "/medecin/signup" }
     , { text: "Sign In", varient: "main", href: "/signin" }
     , { text: "Sign Up", varient: "main", href: "/patient/signup" }
@@ -27,14 +44,19 @@ function Navbar({ backgroundColor, position }) {
     }}>
       <a href="/" style={{ textDecoration: "none" }}>
         <span style={{
-          color: colors.main,
+          color: "white",
           fontSize: "32px",
           fontWeight: "700"
         }}>Logo</span>
       </a>
       <div style={{ flexGrow: 1 }}></div>
       <nav style={{ display: "flex", gap: "10px" }}>
-        {windowstate > 700 ? buttons.map(props => <Button color="white" type="outlined" {...props} style={{ background: colors.navbar, borderRadius: "5px" }} />) : <Button varient="main" text={"navbar"} />}
+        <RenderIfNotAuthentified>
+          {windowstate > 700 ? unauthorized_buttons.map(props => <Button color="white" type="outlined" {...props} style={{ background: colors.navbar, borderRadius: "5px" }} />) : <Button varient="main" text={"navbar"} />}
+        </RenderIfNotAuthentified>
+        <RenderIfAuthentifiedPatient>
+          {windowstate > 700 ? patient_buttons.map(props => <Button color="white" type="outlined" {...props} style={{ background: colors.navbar, borderRadius: "5px" }} />) : <Button varient="main" text={"navbar"} />}
+        </RenderIfAuthentifiedPatient>
       </nav>
     </header>
   );
