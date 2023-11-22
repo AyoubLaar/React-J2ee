@@ -3,36 +3,59 @@ import Row from "./Row";
 import Column from "./Column";
 import Button from "./Button"
 import { colors } from "../Parameters";
+import { useNavigate } from "react-router";
 
 export default function SignInForm() {
     function handlesubmit(e) {
         e.preventDefault();
         const data = new FormData(e.target);
+        const role = data.get("role");
         data.delete("role");
         const json = {};
         data.forEach(function (value, key) {
             json[key] = value;
         });
-        console.log(json);
-        fetch("http://localhost:8080/api/v1/patient/signin", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(json)
-        })
-            .then(res => {
-                if (!res.ok) throw new Error();
-                return res.text();
+        if (role == "patient") {
+            fetch("http://localhost:8080/api/v1/patient/signin", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(json)
             })
-            .then(token => {
-                console.log(data);
-                window.localStorage.setItem("token", token);
-                window.history.go(-1);
+                .then(res => {
+                    if (!res.ok) throw new Error();
+                    return res.text();
+                })
+                .then(token => {
+                    alert(token);
+                    window.localStorage.setItem("token", token);
+                    window.location.assign("/")
+                })
+                .catch(e => {
+                    alert("données invalides !");
+                })
+        } else {
+            fetch("http://localhost:8080/api/v1/medecin/signin", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(json)
             })
-            .catch(e => {
-                alert("données invalides !");
-            })
+                .then(res => {
+                    if (!res.ok) throw new Error();
+                    return res.text();
+                })
+                .then(token => {
+                    alert(token);
+                    window.localStorage.setItem("token", token);
+                    window.location.assign("/")
+                })
+                .catch(e => {
+                    alert("données invalides !");
+                })
+        }
     }
     return <>
         <form

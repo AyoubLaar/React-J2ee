@@ -6,8 +6,10 @@ import React from "react";
 
 export default function SignUpMedecinForm() {
     const [specialites, setSpecialites] = React.useState([]);
+    const [villes, setVilles] = React.useState([]);
+
     React.useEffect(() => {
-        fetch("http://localhost:8080/api/v1/specialites/getAll", {
+        fetch("http://localhost:8080/api/v1/specialite/getall", {
             method: "get"
         }).then((res) => {
             if (!res.ok) throw new Error();
@@ -25,26 +27,28 @@ export default function SignUpMedecinForm() {
         data.forEach(function (value, key) {
             json[key] = value;
         });
-        json["specialites"] = specialites;
-        if (json.password != json.confirmedPassword) {
+        json["specialites"] = specialites.filter((element) => element.chosen).map(element => element.specialite);
+        if (json.password != json.Confirmer) {
             alert("Password non égaux");
+        } else {
+            fetch("http://localhost:8080/api/v1/medecin/signup", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(json)
+            }).then(res => {
+                if (!res.ok) throw new Error();
+                return res.text();
+            }).then((data) => {
+                alert("Demande effectué avec succés!");
+                window.location.assign("/");
+                window.localStorage.setItem("token", data);
+            }).catch((error) => {
+                console.log(error);
+                alert("données invalide!");
+            })
         }
-        fetch("http://localhost:8080/api/v1/patient/signup", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(json)
-        }).then(res => {
-            if (!res.ok) throw new Error();
-        }).then((data) => {
-            alert("Demande effectué avec succés!");
-            window.location = "/";
-            window.localStorage.setItem("auth_token", data.token);
-        }).catch((error) => {
-            console.log(error);
-            alert("erreur de la requête!");
-        })
     }
 
     return specialites.length == 0 ? <></> : <>
@@ -75,7 +79,7 @@ export default function SignUpMedecinForm() {
                     <Row gap="30px">
                         <Column>
                             <label for="email"><h2>Email</h2></label>
-                            <input type="email" id="email" name="email" required placeholder="Votre email" />
+                            <input type="email" id="email" name="medLogin" required placeholder="Votre email" />
                         </Column>
                         <Column>
                             <label for="phoneNumber"><h2>Téléphone</h2></label>
@@ -89,17 +93,17 @@ export default function SignUpMedecinForm() {
                         </Column>
                         <Column>
                             <label for="addresse"><h2>Addresse</h2></label>
-                            <input type="text" id="addresse" name="addresse" required placeholder="Addresse de votre cabinet" />
+                            <input type="text" id="addresse" name="adressCabinet" required placeholder="Addresse de votre cabinet" />
                         </Column>
                     </Row>
                     <Row gap="30px">
                         <Column width={"100%"}>
                             <label for="code"><h2>Code Médecin</h2></label>
-                            <input type="text" id="code" name="code" required placeholder="Votre code de medecin" />
+                            <input type="text" id="code" name="codeOrdreMedecin" required placeholder="Votre code de medecin" />
                         </Column>
                         <Column width={"100%"}>
                             <label for="date"><h2>Date de naissance</h2></label>
-                            <input type="date" id="date" name="date" required />
+                            <input type="date" id="date" name="dateDeNaissance" required />
                         </Column>
                     </Row>
                     <Row gap="30px">
@@ -107,16 +111,38 @@ export default function SignUpMedecinForm() {
                             <h2>Sexe</h2>
                             <Row gap={"10px"}  >
                                 <Row gap={"5px"} breakpoint={0}>
-                                    <input type="radio" name="sexe" id="homme" value="homme" required style={{ padding: 0 }} />
+                                    <input type="radio" name="sexe" id="homme" value="Homme" required style={{ padding: 0 }} />
                                     <label for="homme">Homme</label>
                                 </Row>
                                 <Row gap={"5px"} breakpoint={0}>
-                                    <input type="radio" name="sexe" id="femme" value="femme" required style={{ padding: 0 }} />
+                                    <input type="radio" name="sexe" id="femme" value="Femme" required style={{ padding: 0 }} />
                                     <label for="femme">Femme</label>
                                 </Row>
                             </Row>
                         </Column>
                     </Row>
+                    <Column>
+                        <h2>Specialités</h2>
+                        <Row gap={"10px"}>
+                            {specialites.map((Element, index) =>
+                                <Button
+                                    attributes={{ type: "button" }}
+                                    varient={"main"}
+                                    type={Element.chosen ? "filled" : "outlined"}
+                                    text={Element.specialite}
+                                    style={Element.chosen ? {
+                                        borderRadius: "none"
+                                    } : {}}
+                                    onclick={() => {
+                                        setSpecialites(specialites.map((element, elementIndex) => {
+                                            if (elementIndex == index) return { ...element, chosen: !element.chosen }
+                                            return element;
+                                        }));
+                                    }}
+                                />
+                            )}
+                        </Row>
+                    </Column>
                 </Column>
                 <Button text={"Soumettre demande"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
             </Column >

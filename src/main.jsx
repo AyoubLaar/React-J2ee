@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import Home from './Pages/Home.jsx'
 import SignIn from './Pages/SignIn.jsx';
@@ -7,11 +7,13 @@ import SearchPage from './Pages/SearchPage.jsx';
 import RendezVous from './Pages/RendezVous.jsx';
 import SignUpMedecin from './Pages/SingUpMedecin.jsx';
 //import StickyHeadTable from "./components/TableEspaceClient.jsx"
-
+import 'bootstrap/dist/css/bootstrap.css'
+import "./globals.css"
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import NavBarButtons from './components/NavBarButtons.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,11 +45,14 @@ const router = createBrowserRouter([
   },
 
 ]);
-import 'bootstrap/dist/css/bootstrap.css'
-import "./globals.css"
+
+
+export const context = createContext();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <context.Provider value={<NavBarButtons />}>
+      <RouterProvider router={router} />
+    </context.Provider>
   </React.StrictMode>,
 )
