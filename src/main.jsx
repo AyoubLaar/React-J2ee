@@ -6,14 +6,17 @@ import SignUp from './Pages/SignUp.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
 import RendezVous from './Pages/RendezVous.jsx';
 import SignUpMedecin from './Pages/SingUpMedecin.jsx';
-//import StickyHeadTable from "./components/TableEspaceClient.jsx"
 import 'bootstrap/dist/css/bootstrap.css'
 import "./globals.css"
+import StickyHeadTable from "./components/TableEspaceClient.jsx"
+import Sidebar from "./components/Sidebar"
+import EspaceClient from './Pages/Espaceclient.jsx';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import NavBarButtons from './components/NavBarButtons.jsx';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,10 +38,18 @@ const router = createBrowserRouter([
     path: "/rendezvous/:id",
     element: <RendezVous />
   },
-  /* {
-     path: "/Client/table",
-     element: <StickyHeadTable />
-   },*/
+  {
+    path: "/Client/table",
+    element: <StickyHeadTable />
+  },
+  {
+    path: "/client/sidebar",
+    element: <Sidebar />
+  },
+  {
+    path: "/patient/monespace",
+    element: <EspaceClient />
+  },
   {
     path: "/medecin/signup",
     element: <SignUpMedecin />
