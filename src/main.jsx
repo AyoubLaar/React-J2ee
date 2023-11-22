@@ -7,6 +7,9 @@ import SearchPage from './Pages/SearchPage.jsx';
 import RendezVous from './Pages/RendezVous.jsx';
 import SignUpMedecin from './Pages/SingUpMedecin.jsx';
 import StickyHeadTable from "./components/TableEspaceClient.jsx"
+import Sidebar from "./components/Sidebar"
+import EspaceClient from './Pages/Espaceclient.jsx';
+
 
 import {
   createBrowserRouter,
@@ -37,6 +40,14 @@ const router = createBrowserRouter([
      path: "/Client/table",
      element: <StickyHeadTable />
    },
+   {
+    path: "/client/sidebar",
+    element: <Sidebar />
+  },
+  {
+    path: "/Espaceclient",
+    element: <EspaceClient />
+  },
   {
     path: "/medecin/signup",
     element: <SignUpMedecin />
