@@ -12,7 +12,7 @@ export default function HeroElement() {
         });
     }, [])
     return <div style={{
-        background: "linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.5) ),url('/../src/assets/teleconsultation_avec_medecin2.jpg')",
+        background: "linear-gradient( rgba(0,0,0,.9), rgba(0,0,0,.2) ),url('/../src/assets/teleconsultation_avec_medecin2.jpg')",
         width: "100%", minHeight: "100vh", position: "relative", height: "fit-content", padding: "100px 0"
         , display: "flex", justifyContent: "center", alignItems: "center", zIndex: "0", backgroundPosition: "center"
         , backgroundSize: "cover", backgroundRepeat: "no-repeat"
