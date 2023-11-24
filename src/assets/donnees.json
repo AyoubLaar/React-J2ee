@@ -1,0 +1,36 @@
+{
+    "villes": [
+        "Casablanca",
+        "Marrakech",
+        "Rabat",
+        "Fès",
+        "Tanger",
+        "Agadir",
+        "Meknès",
+        "Oujda",
+        "Kenitra",
+        "Tétouan",
+        "Safi",
+        "El Jadida",
+        "Beni Mellal",
+        "Taza",
+        "Khouribga"
+    ],
+    "specialites": [
+        "Cardiologie",
+        "Gastroentérologie",
+        "Pédiatrie",
+        "Orthopédie",
+        "Ophtalmologie",
+        "Dermatologie",
+        "Psychiatrie",
+        "Gynécologie",
+        "Urologie",
+        "Neurologie",
+        "Radiologie",
+        "Oncologie",
+        "Néphrologie",
+        "Endocrinologie",
+        "Hématologie"
+    ]
+}

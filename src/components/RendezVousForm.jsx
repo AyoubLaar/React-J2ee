@@ -3,63 +3,67 @@ import Row from "./Row";
 import Button from "./Button";
 import { colors } from "../Parameters";
 import React from "react";
+import 'react-calendar/dist/Calendar.css';
+import Calendar from 'react-calendar';
 
-export default function RendezVousForm() {
-    const [heure, setHeure] = React.useState(null)
+export default function RendezVousForm({ medecinId }) {
+    const [date, setDate] = React.useState(new Date().toISOString().slice(0, 10));
+    const [heureChoisi, setHeure] = React.useState(null);
+    const [datesRDV, setDatesRDV] = React.useState({
+        "2023-11-24": [9, 10, 14],
+        "2023-11-25": [11, 15],
+        "2023-11-26": [13, 16, 17],
+        // Add more dates and occupied hours as needed...
+    }
+    );
 
-    const heures = [
-        { hour: 0, available: true },
-        { hour: 1, available: false },
-        { hour: 2, available: true },
-        { hour: 3, available: false },
-        { hour: 4, available: true },
-        { hour: 5, available: true },
-        { hour: 6, available: false },
-        { hour: 7, available: true },
-        { hour: 8, available: false },
-        { hour: 9, available: true },
-        { hour: 10, available: true },
-        { hour: 11, available: false },
-        { hour: 12, available: true },
-        { hour: 13, available: false },
-        { hour: 14, available: true },
-        { hour: 15, available: true },
-        { hour: 16, available: false },
-        { hour: 17, available: true },
-        { hour: 18, available: false },
-        { hour: 19, available: true },
-        { hour: 20, available: true },
-        { hour: 21, available: false },
-        { hour: 22, available: true },
-        { hour: 23, available: true },
-    ];
+    console.log(datesRDV[date]);
 
-    function handleClick(index) {
-        setHeure(heures[index]);
+    function handleSubmit() {
+        return;
     }
 
+    React.useEffect(() => {
+        /*
+         fetch("http://localhost:8080/api/v1/getdatesrdv?id=" + medecinId, {
+             method: " "
+         }).then((res) => {
+             if (!res.ok) throw new Error();
+             return res.json();
+         }).then((data) => {
+             setDatesRDV(data);
+         })
+        */
+    }, [medecinId])
     return <>
-        <form style={{ height: "auto", width: "fit-content", padding: "50px ", borderRadius: "5px", border: "2px solid black", backgroundColor: "white" }}>
-            <Column justifyContent={"center"} alignItems={"center"} gap={"30px"}>
-                <h1><b>Prendre rendez-vous</b></h1>
-                <Column>
-                    <label for="date"><h2>date de Rendez vous :</h2></label>
-                    <input type="date" id="date" name="date" required />
-                </Column>
-                <Column>
-                    <label for="heure"><h2>heure de Rendez vous :</h2></label>
-                    <Row gap={"10px"}>
-                        <select name="heure">
-                            {heures.map((heure, index) =>
-                                <option value={heure.hour} style={{ color: heure.available ? colors.good : colors.bad }} onClick={() => handleClick(index)}>
-                                    {heure.hour}
-                                </option>
-                            )}
-                        </select>
-                        {heure != null ? <span style={{ color: heure.available ? colors.good : colors.bad }}>{heure.available ? "disponible" : "undisponible"}</span> : <></>}
+        <form style={{ height: "fit-content", width: "100%", padding: "50px ", border: "2px solid black", backgroundColor: "white" }}>
+            <Column gap={"30px"}>
+                {medecinId == undefined ? <>
+                    <Column ><h2>Aucun medecin choisi</h2></Column>
+                </> : (<>
+                    <Row gap={"10px"} breakpoint={1200}>
+                        <Column>
+                            <h2>Date :</h2>
+                            <Calendar
+                                minDate={new Date()}
+                                onChange={(value, event) => {
+                                    setDate(value.toISOString().slice(0, 10));
+                                }} />
+                        </Column>
+                        <Column>
+                            <label for="heure"><h2>Heure disponibles:</h2></label>
+                            <Row gap={"10px"}>
+                                <select name="heure">
+                                    {Array.from({ length: 10 }, (x, i) => i + 9).filter(heure => datesRDV[date] == undefined || !datesRDV[date].filter((heure_undispo) => heure == heure_undispo).length).map((heure_disponible) => {
+                                        console.log(heure_disponible)
+                                        return <option value={heure_disponible + ""} >{heure_disponible}</option>;
+                                    })}
+                                </select>
+                            </Row>
+                        </Column>
                     </Row>
-                </Column>
-                <Button text={"soumettre demande"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
+                    <Button attributes={{ type: "button" }} text={"soumettre demande"} color="white" type="outlined" varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} onclick={handleSubmit} />
+                </>)}
             </Column>
         </form >
     </>;

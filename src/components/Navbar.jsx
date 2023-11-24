@@ -9,7 +9,7 @@ function Navbar({ position, backgroundColor }) {
   const NavBarButtons = React.useContext(context);
   return (
     <header style={{
-      height: "fit-content", display: "flex", flexDirection: "row",
+      height: "100px", display: "flex", flexDirection: "row",
       top: 0, left: 0, right: 0, padding: "20px"
       , zIndex: "1",
       justifyContent: "space-between",
