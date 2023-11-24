@@ -16,6 +16,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import NavBarButtons from './components/NavBarButtons.jsx';
+import EspaceMedecin from './Pages/EspaceMedecin.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/medecin/signup",
     element: <SignUpMedecin />
+  },
+  {
+    path: "/medecin/monespace",
+    element: <EspaceMedecin />
   },
 
 ]);

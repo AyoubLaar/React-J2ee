@@ -36,7 +36,7 @@ export default function RendezVousForm({ medecinId }) {
         */
     }, [medecinId])
     return <>
-        <form style={{ height: "fit-content", width: "100%", padding: "50px ", border: "2px solid black", backgroundColor: "white" }}>
+        <form style={{ height: "fit-content", width: "100%", padding: "50px ", backgroundColor: "white" }}>
             <Column gap={"30px"}>
                 {medecinId == undefined ? <>
                     <Column ><h2>Aucun medecin choisi</h2></Column>

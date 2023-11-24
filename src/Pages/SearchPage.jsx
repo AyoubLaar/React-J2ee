@@ -133,7 +133,7 @@ export default function SearchPage() {
                     <SearchForm setMedecinData={setMedecinData} />
                 </Row>
             </div>
-            <Row justifyContent={"start"} breakpoint={0}>
+            <Row justifyContent={"start"} breakpoint={0} >
                 <Column alignItems={"center"} width={"50%"} padding={"10px"}>
                     <Column gap={"20px"} alignItems={"center"} width={"100%"}>
                         <Column width={"100%"} gap="10px">
@@ -147,8 +147,11 @@ export default function SearchPage() {
                         </Column>
                     </Column>
                 </Column>
-                <Column width={"50%"} padding={"10px"} height={"fit-content"} style={{ maxHeight: "500px", position: "fixed", top: "260", right: "0", overflowY: "scroll" }}>
-                    <RendezVousForm medecinId={id} />
+                <Column padding={"10px"} width={"50%"} height={"fit-content"} style={{ position: "fixed", top: "260", right: "0", }}>
+                    <div style={{ overflowY: "scroll", border: "2px solid black", maxHeight: "max(500px,40vh)" }}>
+                        <RendezVousForm medecinId={id} />
+                    </div>
+
                 </Column>
             </Row>
         </>

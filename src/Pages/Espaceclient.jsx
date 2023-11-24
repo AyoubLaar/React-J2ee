@@ -8,10 +8,11 @@ const mainContainerStyle = {
 };
 
 export default function EspaceClient() {
-  return (
+  return (<>
+    <Navbar backgroundColor={colors.navbar} />
     <div className="Espaceclient">
-      <Navbar backgroundColor={colors.navbar} />
       <Sidebar />
     </div>
+  </>
   );
 }
