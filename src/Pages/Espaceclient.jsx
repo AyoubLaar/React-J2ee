@@ -15,18 +15,31 @@ const contentContainerStyle = {
 const sidebarStyle = {
   flex: '0 0 auto',
   position: 'fixed',
-  top: '60px'
-};
+
+};tableContainerStyle
+
 
 export default function EspaceClient() {
   return (
     <div >
       <Navbar backgroundColor={colors.navbar} />
-      <div style={sidebarStyle}>
-        <Sidebar />
+
+      <div className="tableContainerStyle">
+
+        <div className="SideBarElt">
+          <Sidebar/>
+        </div>
+        <div className="tableHolder">
+        <StickyHeadTable/>
+        </div>
+
+        
+        
+       
       </div>
-      <div style={contentContainerStyle}>
-      </div>
+
+     
+      
     </div>
   );
 }
