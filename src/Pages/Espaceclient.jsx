@@ -5,16 +5,28 @@ import { colors } from "../Parameters";
 
 const mainContainerStyle = {
   display: 'flex',
-  flexDirection: 'column',
+};
+
+const contentContainerStyle = {
+  flex: '1', 
+  overflowY: 'auto', 
+};
+
+const sidebarStyle = {
+  flex: '0 0 auto',
+  position: 'fixed',
+  top: '60px'
 };
 
 export default function EspaceClient() {
-  return (<>
-    <Navbar backgroundColor={colors.navbar} />
-    <div className="Espaceclient">
-      <Sidebar />
-      <StickyHeadTable />
+  return (
+    <div >
+      <Navbar backgroundColor={colors.navbar} />
+      <div style={sidebarStyle}>
+        <Sidebar />
+      </div>
+      <div style={contentContainerStyle}>
+      </div>
     </div>
-  </>
   );
 }
