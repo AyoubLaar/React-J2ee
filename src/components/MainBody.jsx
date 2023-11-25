@@ -9,9 +9,9 @@ import { colors } from "../Parameters";
 
 export default function MainBody() {
     const specialites = [
-        { specialite: "cardiology", image: image_cardiology, href: "/Search?specialite=cardiologie" },
-        { specialite: "chirurgie", image: image_chirurgie, href: "/Search?specialite=chirurgie" },
-        { specialite: "oncologie", image: image_oncology, href: "/Search?specialite=oncologie" }
+        { specialite: "Cardiology", image: image_cardiology, href: "/Search?specialite=Cardiologie&ville=Casablanca" },
+        { specialite: "Chirurgie", image: image_chirurgie, href: "/Search?specialite=Chirurgie&ville=Casablanca" },
+        { specialite: "Oncologie", image: image_oncology, href: "/Search?specialite=Oncologie&ville=Casablanca" }
     ];
 
     return (
@@ -47,7 +47,7 @@ export default function MainBody() {
             }} alignItems="center" gap={"5px"}>
                 <section style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <h1 style={{ color: "white" }}><b>Chercher par Specialité :</b> </h1>
-                    <Row breakpoint={1200} justifyContent={"center"} width={"100%"} gap={"100px"} style={{ padding: "25px 50px 0" }}>
+                    <Row breakpoint={1200} alignItems={"center"} justifyContent={"space-evenly"} width={"100%"} gap={"100px"} style={{ padding: "25px 50px 0" }}>
                         {specialites.map(specialite => <SpecialtyCard {...specialite} />)}
                     </Row>
                 </section>

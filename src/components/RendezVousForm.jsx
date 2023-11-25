@@ -8,32 +8,53 @@ import Calendar from 'react-calendar';
 
 export default function RendezVousForm({ medecinId }) {
     const [date, setDate] = React.useState(new Date().toISOString().slice(0, 10));
-    const [heureChoisi, setHeure] = React.useState(null);
-    const [datesRDV, setDatesRDV] = React.useState({
-        "2023-11-24": [9, 10, 14],
-        "2023-11-25": [11, 15],
-        "2023-11-26": [13, 16, 17],
-        // Add more dates and occupied hours as needed...
-    }
-    );
-
-    console.log(datesRDV[date]);
-
+    const [heureChoisi, setHeure] = React.useState(9);
+    const [datesRDV, setDatesRDV] = React.useState(null);
     function handleSubmit() {
+        const token = window.localStorage.getItem("token");
+        if (token == undefined) alert("il faut s'authentifier");
+        else {
+            fetch("http://localhost:8080/api/v1/patient/dashboard/recherche?medecinId=" + medecinId, {
+                method: "PUT",
+                headers: {
+                    "token": window.localStorage.getItem("token"),
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    medecinId: medecinId,
+                    dateRdv: date,
+                    heureRdv: heureChoisi
+                })
+            }).then((res) => {
+                if (!res.ok) throw new Error();
+                return res.text();
+            }).then((data) => {
+                alert("Rendez Vous effectué avec succés");
+                window.location.reload();
+            }).catch(() => {
+                alert("error")
+            })
+        }
         return;
     }
 
     React.useEffect(() => {
-        /*
-         fetch("http://localhost:8080/api/v1/getdatesrdv?id=" + medecinId, {
-             method: " "
-         }).then((res) => {
-             if (!res.ok) throw new Error();
-             return res.json();
-         }).then((data) => {
-             setDatesRDV(data);
-         })
-        */
+        if (medecinId != null)
+            fetch("http://localhost:8080/api/v1/patient/dashboard/recherche?medecinId=" + medecinId, {
+                method: "GET",
+                headers: {
+                    "token": window.localStorage.getItem("token")
+                },
+            }).then((res) => {
+                if (!res.ok) throw new Error();
+                return res.json();
+            }).then((data) => {
+                console.log("dates heures : " + JSON.stringify(data))
+                setDatesRDV(data);
+            }).catch(() => {
+                alert("Il faut s'authentifier !")
+                setDatesRDV(null);
+            })
     }, [medecinId])
     return <>
         <form style={{ height: "fit-content", width: "100%", padding: "50px ", backgroundColor: "white" }}>
@@ -51,12 +72,13 @@ export default function RendezVousForm({ medecinId }) {
                                 }} />
                         </Column>
                         <Column>
-                            <label for="heure"><h2>Heure disponibles:</h2></label>
+                            <label for="heure"><h2>Heure :</h2></label>
                             <Row gap={"10px"}>
                                 <select name="heure">
-                                    {Array.from({ length: 10 }, (x, i) => i + 9).filter(heure => datesRDV[date] == undefined || !datesRDV[date].filter((heure_undispo) => heure == heure_undispo).length).map((heure_disponible) => {
-                                        console.log(heure_disponible)
-                                        return <option value={heure_disponible + ""} >{heure_disponible}</option>;
+                                    {dateRdv != null && Array.from({ length: 10 }, (x, i) => i + 9).filter(heure => datesRDV[date] == undefined || !datesRDV[date].filter((heure_undispo) => heure == heure_undispo).length).map((heure_disponible) => {
+                                        return <option value={heure_disponible + ""} onClick={() => {
+                                            setHeure(heure_disponible);
+                                        }}>{heure_disponible}</option>;
                                     })}
                                 </select>
                             </Row>

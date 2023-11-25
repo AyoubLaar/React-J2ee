@@ -15,10 +15,11 @@ function Navbar({ position, backgroundColor }) {
       justifyContent: "space-between",
       alignItems: "center",
       position: position,
-      backgroundColor: backgroundColor
+      backgroundColor: backgroundColor,
     }}>
       <a href="/" style={{ textDecoration: "none" }}>
-        <img src={Logo} alt="Logo" style={{ transform: "scale(1.2)" }} />
+        {/* <img src={Logo} alt="Logo" style={{ transform: "scale(1.2)" }} /> */}
+        <span style={{ fontSize: "32px", fontWeight: "700" }}>LOGO</span>
       </a>
       <nav style={{ display: "flex", gap: "10px" }}>
         {NavBarButtons}

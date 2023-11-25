@@ -30,7 +30,7 @@ export default function SignInForm() {
                 .then(token => {
                     alert(token);
                     window.localStorage.setItem("token", token);
-                    window.location.assign("/")
+                    history.go(-1)
                 })
                 .catch(e => {
                     alert("données invalides !");
@@ -50,7 +50,7 @@ export default function SignInForm() {
                 .then(token => {
                     alert(token);
                     window.localStorage.setItem("token", token);
-                    window.location.assign("/")
+                    history.go(-1)
                 })
                 .catch(e => {
                     alert("données invalides !");
