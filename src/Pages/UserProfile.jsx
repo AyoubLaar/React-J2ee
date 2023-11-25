@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
 
 
 
@@ -28,111 +29,53 @@ const UserProfile = () => {
   return (
     
 
-    
-    <div>
-      <Navbar />
-      
-      <hr />
-      <div className="container_bootstrap">
-        
-        
-        <div className="row">
-          <div className="col-sm-10">
-            <h1>User name</h1>
-          </div>
+    <>
+    <Navbar />
+    <div style={{display:'flex'}}>
+
+    <div className="SideBarElt">
+          <Sidebar/>
         </div>
+
+    <div style={{display:'flex', flexDirection:'column', flex:'1',alignItems:'center'}}>
+      <hr />
+      <div className="container">
+        
         <div className="row">
-          <div className="col-sm-3">
-            <div className="text-center">
+            <h1>User name</h1>
+            <div className="">
               <img
                 src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
                 className="avatar img-circle img-thumbnail"
                 alt="avatar"
               />
               <h6>Upload a different photo...</h6>
-              <input type="file" className="text-center center-block file-upload" />
+              <input type="file" className="upload" />
             </div>
-            <br />
-          </div>
-
-          <div className="col-sm-9">
-            <div className="tab-content">
-              <div className="tab-pane active" id="home">
-                <hr />
-                <form className="form" action="##" method="post" id="registrationForm">
-                <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>nom</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any."/>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Prénom</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any."/>
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>N° de téléphone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any."/>
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Date de naissance</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any."/>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email."/>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Localisation</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location"/>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password."/>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verfier le password</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2."/>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br/>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Sauvegarder</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> réinitialiser</button>
-                            </div>
-                      </div>
-                </form>
-                <hr />
-              </div>
-              {/* Other tab-pane content */}
-            </div>
-          </div>
         </div>
+
+       <div className="row">
+        <input type="text" placeholder='nom'/>
+        <input type="number" placeholder='telephone'/>
+        <input type="email" placeholder='email'/>
+        <input type="password" placeholder='password'/>
+       </div>
+
+       <div className="row">
+        <input type="text" placeholder='prenom'/>
+        <input type="date" placeholder='Date de naissance'/>
+        <input type="text" placeholder='localisation'/>
+        <input type="password" placeholder='verifier password'/>
+       </div>
+      </div>
+
+      <div className='buttons'>
+        <button style={{backgroundColor:'#58be3e',color:'white'}}>Sauvegarder</button>
+        <button>Réinitialiser</button>
       </div>
     </div>
+    </div>
+    </>
   );
 };
 

@@ -11,7 +11,7 @@ function Navbar({ position, backgroundColor }) {
     <header style={{
       height: "100px", display: "flex", flexDirection: "row",
       top: 0, left: 0, right: 0, padding: "20px"
-      , zIndex: "1",
+      , zIndex: "100",
       justifyContent: "space-between",
       alignItems: "center",
       position: position,
