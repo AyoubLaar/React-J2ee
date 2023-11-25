@@ -16,6 +16,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import NavBarButtons from './components/NavBarButtons.jsx';
+import UserProfile from './Pages/UserProfile.jsx';
 import EspaceMedecin from './Pages/EspaceMedecin.jsx';
 
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/patient/monespace",
     element: <EspaceClient />
+  },
+  {
+    path: "/patient/monespace/userprofile",
+    element: <UserProfile />
   },
   {
     path: "/medecin/signup",

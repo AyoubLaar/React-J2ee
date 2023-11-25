@@ -7,15 +7,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Navbar from './Navbar';
-import { colors } from '../Parameters';
 
 const columns = [
   { id: 'name', label: 'Médecin', minWidth: 170 },
   { id: 'code', label: 'Date de RDV', minWidth: 100 },
   {
     id: 'population',
-    label: 'Date de Résérvation',
+    label: 'Date de Réservation',
     minWidth: 170,
     align: 'right',
     format: (value) => value.toLocaleString('en-US'),
@@ -35,6 +33,7 @@ const columns = [
     format: (value) => value.toFixed(2),
   },
 ];
+
 
 function createData(name, code, population, size) {
   const density = population / size;
@@ -58,7 +57,6 @@ const rows = [
   createData('Nigeria', 'NG', 200962417, 923768),
   createData('Brazil', 'BR', 210147125, 8515767),
 ];
-
 export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -73,16 +71,15 @@ export default function StickyHeadTable() {
   };
 
   return (
-    <>
-      <Navbar /> {/* Adding the Navbar component */}
-      <div style={{ paddingTop: '64px' }}> {/* Adjust the padding top as needed */}
+    <div className='Table'>
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
-            <TableRow>
+            <TableRow >
               {columns.map((column) => (
                 <TableCell
+                  sx={{backgroundColor: '#CCC8AA'}}
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
@@ -115,6 +112,7 @@ export default function StickyHeadTable() {
         </Table>
       </TableContainer>
       <TablePagination
+       sx= {{backgroundColor: '#CCC8AA' }}
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
         count={rows.length}
@@ -125,6 +123,5 @@ export default function StickyHeadTable() {
       />
     </Paper>
     </div>
-    </>
   );
 }

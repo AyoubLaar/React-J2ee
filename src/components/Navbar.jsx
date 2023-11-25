@@ -1,7 +1,7 @@
 import React from "react";
 import { context } from "../main";
 import { colors } from "../Parameters";
-import Logo from "../assets/logo.svg"
+import Logo from "../logo.svg"
 
 function Navbar({ position, backgroundColor }) {
   if (position == undefined) position = "sticky";

@@ -3,16 +3,13 @@ import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import ChatIcon from '@mui/icons-material/Chat';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 
 export const SidebarData = [
     
 
-    {
-        // Profile Picture
-        isProfile: true,
-        profileImage: '../pic.jpg', // Replace with the actual URL of your profile picture
-    },
+    
     {
         title: "Tableau de bord",
         icon: <SpaceDashboardIcon />,
@@ -25,8 +22,13 @@ export const SidebarData = [
     },
     {
         title: "Rendez-vous",
-        icon: <ReceiptIcon />,
+        icon: <ChecklistRtlIcon />,
         link: "/Rendez-vous"
+    },
+    {
+        title: "Ordonnances",
+        icon: <ReceiptIcon />,
+        link: "/Ordonnances et factures"
     },
     {
         title: "Modifier le profil",
