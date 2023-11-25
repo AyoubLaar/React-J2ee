@@ -8,7 +8,7 @@ import Calendar from 'react-calendar';
 
 export default function RendezVousForm({ medecinId }) {
     const [date, setDate] = React.useState(new Date().toISOString().slice(0, 10));
-    const [heureChoisi, setHeure] = React.useState(9);
+    const [heureChoisi, setHeure] = React.useState(null);
     const [datesRDV, setDatesRDV] = React.useState(null);
     function handleSubmit() {
         const token = window.localStorage.getItem("token");
@@ -75,7 +75,8 @@ export default function RendezVousForm({ medecinId }) {
                             <label for="heure"><h2>Heure :</h2></label>
                             <Row gap={"10px"}>
                                 <select name="heure">
-                                    {dateRdv != null && Array.from({ length: 10 }, (x, i) => i + 9).filter(heure => datesRDV[date] == undefined || !datesRDV[date].filter((heure_undispo) => heure == heure_undispo).length).map((heure_disponible) => {
+                                    <option disabled selected value> -- select an option -- </option>
+                                    {datesRDV != null && Array.from({ length: 10 }, (x, i) => i + 9).filter(heure => datesRDV[date] == undefined || !datesRDV[date].filter((heure_undispo) => heure == heure_undispo).length).map((heure_disponible) => {
                                         return <option value={heure_disponible + ""} onClick={() => {
                                             setHeure(heure_disponible);
                                         }}>{heure_disponible}</option>;

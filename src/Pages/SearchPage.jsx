@@ -64,7 +64,7 @@ export default function SearchPage() {
                     </Column>
                 </Column>
                 <Column padding={"10px"} width={"50%"} height={"fit-content"} style={{ position: "fixed", top: "260", right: "0", }}>
-                    <div style={{ overflowY: "scroll", border: "2px solid black", maxHeight: "max(500px,40vh)" }}>
+                    <div style={{ overflowY: "scroll", border: "2px solid black", maxHeight: "max(300px,40vh)" }}>
                         <RendezVousForm medecinId={id} />
                     </div>
 

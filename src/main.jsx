@@ -4,12 +4,9 @@ import Home from './Pages/Home.jsx'
 import SignIn from './Pages/SignIn.jsx';
 import SignUp from './Pages/SignUp.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
-import RendezVous from './Pages/RendezVous.jsx';
 import SignUpMedecin from './Pages/SingUpMedecin.jsx';
 import 'bootstrap/dist/css/bootstrap.css'
 import "./globals.css"
-import StickyHeadTable from "./components/TableEspaceClient.jsx"
-import Sidebar from "./components/Sidebar"
 import EspaceClient from './Pages/Espaceclient.jsx';
 import {
   createBrowserRouter,
@@ -18,6 +15,7 @@ import {
 import NavBarButtons from './components/NavBarButtons.jsx';
 import UserProfile from './Pages/UserProfile.jsx';
 import EspaceMedecin from './Pages/EspaceMedecin.jsx';
+import RequireAuthentification from "./components/RequireAuthentification.jsx"
 
 const router = createBrowserRouter([
   {
@@ -37,24 +35,12 @@ const router = createBrowserRouter([
     element: <SearchPage />
   },
   {
-    path: "/rendezvous/:id",
-    element: <RendezVous />
-  },
-  {
-    path: "/Client/table",
-    element: <StickyHeadTable />
-  },
-  {
-    path: "/client/sidebar",
-    element: <Sidebar />
-  },
-  {
     path: "/patient/monespace",
-    element: <EspaceClient />
+    element: <RequireAuthentification role={"patient"}><EspaceClient /></RequireAuthentification>
   },
   {
     path: "/patient/monespace/userprofile",
-    element: <UserProfile />
+    element: <RequireAuthentification role={"patient"}><UserProfile /></RequireAuthentification>
   },
   {
     path: "/medecin/signup",
@@ -62,7 +48,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/medecin/monespace",
-    element: <EspaceMedecin />
+    element: <RequireAuthentification role={"medecin"}><EspaceMedecin /></RequireAuthentification>
   },
 
 ]);

@@ -11,8 +11,8 @@ export default function NavBarButtons() {
 
     const unauthorized_buttons = [
         { text: "Vous êtes medecin ?", varient: "main", href: "/medecin/signup" }
-        , { text: "Sign In", varient: "main", href: "/signin" }
-        , { text: "Sign Up", varient: "main", href: "/patient/signup" }
+        , { text: "Sign In", varient: "main", href: "/signin?url=" + window.location }
+        , { text: "Sign Up", varient: "main", href: "/patient/signup?url=" + window.location }
     ].map(
         props => <Button color="white" type="outlined" {...props} style={{ background: colors.navbar, borderRadius: "5px" }} />
     )

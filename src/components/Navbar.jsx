@@ -19,7 +19,7 @@ function Navbar({ position, backgroundColor }) {
     }}>
       <a href="/" style={{ textDecoration: "none" }}>
         {/* <img src={Logo} alt="Logo" style={{ transform: "scale(1.2)" }} /> */}
-        <span style={{ fontSize: "32px", fontWeight: "700" }}>LOGO</span>
+        <span style={{ fontSize: "32px", fontWeight: "700", color: "white" }}>LOGO</span>
       </a>
       <nav style={{ display: "flex", gap: "10px" }}>
         {NavBarButtons}
