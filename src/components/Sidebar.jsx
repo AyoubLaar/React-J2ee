@@ -9,6 +9,10 @@ const sidebarStyle = {
 function Sidebar() {
   return (
     <div className='Sidebar' style= {sidebarStyle}>
+      <div className="userProfile">
+        <img src="/home/noureddine/Desktop/DATA/INE2/S3/P1/React-J2ee/src/pic.jpg" className="userAvatar" />
+        <span className="userName">User Profile</span>
+      </div>
       <ul className='SidebarList'> 
         {SidebarData.map((val, key) => {
           return (

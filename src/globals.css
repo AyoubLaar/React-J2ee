@@ -94,6 +94,12 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    position: fixed;
+    top: 0; /* Positioning at the top of the viewport */
+    left: 0; /* Positioning at the left of the viewport */
+    height: 100%; /* Takes full height of the viewport */
+    width: 240px;
+    align-items: center;
   }
   
   .SidebarList{
@@ -133,20 +139,41 @@ button {
   
     flex: 70%;
   }
+  .Table{
+      /* Positioning properties */
+      position: relative; /* or other positioning values like absolute, fixed, etc. */
+      top: 15px; /* Example: Moves the table 50px from the top */
+      left: 30%; /* Example: Moves the table 20% from the left */ 
+      width: 100%; /* Set the table width to 100% of its container */
+      max-width: 800px; /* Maximum width for the table */
+      height: 300px; /* Set the fixed height of the table */
 
-    .profile-section {
+  }
+  .Sidebar {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
   }
   
-  .profile-picture {
-    width: 120px; /* Adjust size as needed */
-    height: 120px; /* Adjust size as needed */
-    border-radius: 50%; /* To create a circular shape */
-    object-fit: cover; /* Ensures the image fills the container */
-    border: 2px solid #fff; /* Optional: Adding a border */
+  .userProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; /* Add margin for spacing */
+  }
+  
+  .userAvatar {
+    width: 100px; /* Adjust the width of the image */
+    height: 100px; /* Adjust the height of the image */
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+  
+  .userName {
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 5px; /* Add margin between image and name */
   }
   
   

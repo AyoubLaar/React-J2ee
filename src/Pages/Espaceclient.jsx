@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import StickyHeadTable from "../components/TableEspaceClient";
 import { colors } from "../Parameters";
 
 const mainContainerStyle = {
@@ -12,6 +13,7 @@ export default function EspaceClient() {
     <div className="Espaceclient">
       <Navbar backgroundColor={colors.navbar} />
       <Sidebar />
+      <StickyHeadTable />
     </div>
   );
 }
