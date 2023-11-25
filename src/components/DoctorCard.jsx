@@ -5,9 +5,9 @@ import doctor_woman from "../assets/doctor_woman.svg"
 import Button from "../components/Button"
 import { colors } from "../Parameters";
 
-export default function DoctorCard({ id, sexe, nom, prenom, addresse, ville }) {
+export default function DoctorCard({ id, sexe, nom, prenom, addresse, ville, specialites, onclick, choisi }) {
     return (
-        <div style={{ padding: "20px", border: "2px solid black", width: "100%", backgroundColor: "white" }}>
+        <div style={{ padding: "20px", border: "2px solid black", width: "100%", backgroundColor: "white", minHeight: "300px" }}>
             <Row gap={"15px"}>
                 <div style={{ border: "2px solid black", padding: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <img src={sexe == "homme" ? doctor_man : doctor_woman} alt={sexe} style={{ aspectRatio: 1, height: "150px" }} />
@@ -17,7 +17,8 @@ export default function DoctorCard({ id, sexe, nom, prenom, addresse, ville }) {
                     <span><b>Prénom :</b> {prenom}</span>
                     <span><b>Addresse :</b> {addresse}</span>
                     <span><b>ville :</b> {ville}</span>
-                    <Button text={"prendre rendez-vous"} color="white" type="outlined" href={"/rendezvous/" + id} varient={"main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px" }} />
+                    <span><b>specilaités : </b>{specialites.map(specialite => specialite + ", ")}</span>
+                    <Button text={choisi ? "Cancel" : "Choisir"} color="white" type={"outlined"} varient={choisi ? "highlight" : "main"} style={{ backgroundColor: colors.navbar, borderRadius: "5px", width: "fit-content" }} onclick={onclick} />
                 </Column>
             </Row>
         </div >
