@@ -16,7 +16,7 @@ const sidebarStyle = {
   flex: '0 0 auto',
   position: 'fixed',
 
-};tableContainerStyle
+};
 
 
 export default function EspaceClient() {

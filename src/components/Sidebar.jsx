@@ -1,7 +1,7 @@
 import React from 'react'
 import "../globals.css"
 import { SidebarData } from './SidebarData'
-import Logo from "../logo.svg"
+
 
 const sidebarStyle = {
     marginTop: '20px', 
