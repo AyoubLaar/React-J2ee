@@ -27,6 +27,7 @@ export default function PatientSignUpForm() {
                 return res.text();
             }).then((data) => {
                 console.log(data);
+                alert("Sign up successfull !");
                 window.localStorage.setItem("token", data);
                 window.location = "/";
             }).catch((error) => {

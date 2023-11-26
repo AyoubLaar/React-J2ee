@@ -24,7 +24,7 @@ export default function SignInFormAdmin() {
                 return res.text();
             })
             .then(token => {
-                alert(token);
+                alert("Signed In !");
                 window.localStorage.setItem("token", token);
                 window.location.assign("/")
             })

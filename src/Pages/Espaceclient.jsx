@@ -47,7 +47,6 @@ export default function EspaceClient() {
           <Tabs sx={{ position: "fixed", top: "100px" }} value={value} onChange={handleChange} >
             <Tab label="Demandes Rendez vous" />
             <Tab label="Rendez vous A venir" />
-            <Tab label="Details du profile" />
           </Tabs>
           <CustomTabPanel value={value} index={0}>
             <TableRendezVousDemandes />

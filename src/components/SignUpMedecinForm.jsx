@@ -30,7 +30,7 @@ export default function SignUpMedecinForm() {
                 if (!res.ok) throw new Error();
                 return res.text();
             }).then((data) => {
-                alert("Demande effectué avec succés!");
+                alert("Demande effectué avec succés , veuillez attendre l'acceptation de votre demande par l'admin!");
                 window.localStorage.setItem("token", data);
                 window.location.assign("/");
             }).catch((error) => {

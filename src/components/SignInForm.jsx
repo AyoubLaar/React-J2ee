@@ -3,7 +3,6 @@ import Row from "./Row";
 import Column from "./Column";
 import Button from "./Button"
 import { colors } from "../Parameters";
-import { useNavigate } from "react-router";
 
 export default function SignInForm() {
     function handlesubmit(e) {
@@ -28,7 +27,7 @@ export default function SignInForm() {
                     return res.text();
                 })
                 .then(token => {
-                    alert(token);
+                    alert("Signed In !");
                     window.localStorage.setItem("token", token);
                     window.location.assign(new URLSearchParams(location.search).get("url"));
                 })
@@ -48,7 +47,7 @@ export default function SignInForm() {
                     return res.text();
                 })
                 .then(token => {
-                    alert(token);
+                    alert("Signed In !");
                     window.localStorage.setItem("token", token);
                     window.location.assign(new URLSearchParams(location.search).get("url"));
                 })

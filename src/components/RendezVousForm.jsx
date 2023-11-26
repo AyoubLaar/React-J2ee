@@ -68,7 +68,10 @@ export default function RendezVousForm({ medecinId }) {
                             <Calendar
                                 minDate={new Date()}
                                 onChange={(value, event) => {
+                                    value.setDate(value.getDate() + 1)
                                     setDate(value.toISOString().slice(0, 10));
+                                    console.log(value.toISOString().slice(0, 10));
+                                    value.setDate(value.getDate() - 1)
                                 }} />
                         </Column>
                         <Column>

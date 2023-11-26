@@ -148,7 +148,7 @@ export default function DemandesMedecins() {
                                     <TableCell>{row.login}</TableCell>
                                     <TableCell>{row.nom}</TableCell>
                                     <TableCell>{row.prenom}</TableCell>
-                                    <TableCell>{row.specialite}</TableCell>
+                                    <TableCell>{row.specialite.map((spec) => spec + " ")}</TableCell>
                                     <TableCell>{row.adresscabinet}</TableCell>
                                     <TableCell>
                                         <Row gap={"10px"}>

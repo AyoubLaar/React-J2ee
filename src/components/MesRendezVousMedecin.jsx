@@ -122,7 +122,6 @@ export default function MesRendezVousMedecin() {
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                 <Tab label="Demandes Rendez vous" />
                 <Tab label="Rendez vous A venir" />
-                <Tab label="Details du profile" />
             </Tabs>
             <CustomTabPanel value={value} index={0}>
                 <TableContainer component={Paper} sx={{ padding: "50px" }}>
