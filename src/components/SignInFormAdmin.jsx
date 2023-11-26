@@ -4,12 +4,10 @@ import Column from "./Column";
 import Button from "./Button"
 import { colors } from "../Parameters";
 
-export default function SignInForm() {
+export default function SignInFormAdmin() {
     function handlesubmit(e) {
         e.preventDefault();
         const data = new FormData(e.target);
-        const role = data.get("role");
-        data.delete("role");
         const json = {};
         data.forEach(function (value, key) {
             json[key] = value;

@@ -16,6 +16,8 @@ import NavBarButtons from './components/NavBarButtons.jsx';
 import UserProfile from './Pages/UserProfile.jsx';
 import EspaceMedecin from './Pages/EspaceMedecin.jsx';
 import RequireAuthentification from "./components/RequireAuthentification.jsx"
+import SignInAdmin from './Pages/SignInAdmin.jsx';
+import EspaceAdmin from './Pages/EspaceAdmin.jsx';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,13 @@ const router = createBrowserRouter([
     path: "/medecin/monespace",
     element: <RequireAuthentification role={"medecin"}><EspaceMedecin /></RequireAuthentification>
   },
+  {
+    path: "/admin/signin",
+    element: <SignInAdmin />
+  }, {
+    path: "/admin/monespace",
+    element: <RequireAuthentification role={"admin"} ><EspaceAdmin /></RequireAuthentification>
+  }
 
 ]);
 

@@ -50,7 +50,7 @@ export default function RendezVousForm({ medecinId }) {
                 return res.json();
             }).then((data) => {
                 console.log("dates heures : " + JSON.stringify(data))
-                setDatesRDV(data);
+                setDatesRDV(data.indisponibles);
             }).catch(() => {
                 alert("Il faut s'authentifier !")
                 setDatesRDV(null);
@@ -74,12 +74,12 @@ export default function RendezVousForm({ medecinId }) {
                         <Column>
                             <label for="heure"><h2>Heure :</h2></label>
                             <Row gap={"10px"}>
-                                <select name="heure">
+                                <select name="heure" onChange={(e) => {
+                                    setHeure(e.target.value);
+                                }}>
                                     <option disabled selected value> -- select an option -- </option>
                                     {datesRDV != null && Array.from({ length: 10 }, (x, i) => i + 9).filter(heure => datesRDV[date] == undefined || !datesRDV[date].filter((heure_undispo) => heure == heure_undispo).length).map((heure_disponible) => {
-                                        return <option value={heure_disponible + ""} onClick={() => {
-                                            setHeure(heure_disponible);
-                                        }}>{heure_disponible}</option>;
+                                        return <option value={heure_disponible + ""} >{heure_disponible}</option>;
                                     })}
                                 </select>
                             </Row>

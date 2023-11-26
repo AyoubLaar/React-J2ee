@@ -17,20 +17,16 @@
         "Khouribga"
     ],
     "specialites": [
-        "Cardiologie",
-        "Gastroentérologie",
-        "Pédiatrie",
-        "Orthopédie",
-        "Ophtalmologie",
-        "Dermatologie",
-        "Psychiatrie",
-        "Gynécologie",
-        "Urologie",
-        "Neurologie",
-        "Radiologie",
-        "Oncologie",
-        "Néphrologie",
-        "Endocrinologie",
-        "Hématologie"
+        "Medecin Généraliste",
+        "Pédiatre",
+        "Psychiatre",
+        "Gynécologue",
+        "Dermatologue",
+        "Chirurgien",
+        "Oncologue",
+        "Therapeute",
+        "Allergologue",
+        "Ophtalmologue",
+        "Rhumatologue"
     ]
 }

@@ -30,14 +30,14 @@ CustomTabPanel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 
-export default function MesRendezVousMedecin() {
-    const [rendezVous, setRendezVous] = React.useState(null);
+export default function DemandesMedecins() {
+    const [users, setUsers] = React.useState(null);
     const [value, setValue] = React.useState(0);
 
     React.useEffect(() => {
         switch (value) {
             case 0:
-                fetch("http://localhost:8080/api/v1/medecin/dashboard/mesdemandes", {
+                fetch("http://localhost:8080/api/v1/admin/dashboard/demands", {
                     method: "get",
                     headers: {
                         "token": window.localStorage.getItem("token")
@@ -47,7 +47,7 @@ export default function MesRendezVousMedecin() {
                     return res.json();
                 }).then(data => {
                     console.log(data);
-                    setRendezVous(data);
+                    setUsers(data);
                 }).catch(error => {
                     console.log("error Rendez-vous")
                 })
@@ -63,7 +63,7 @@ export default function MesRendezVousMedecin() {
                     return res.json();
                 }).then(data => {
                     console.log(data);
-                    setRendezVous(data);
+                    setUsers(data);
                 }).catch(error => {
                     console.log("error Rendez-vous")
                 })
@@ -74,91 +74,89 @@ export default function MesRendezVousMedecin() {
     }, [value])
 
     const handleChange = (event, newValue) => {
-        setRendezVous([]);
+        setUsers([]);
         setValue(newValue);
     };
 
-    function accepterRendezVous(id) {
-        fetch("http://localhost:8080/api/v1/medecin/dashbaord/mesRdv", {
+    function accepterMedecin(id) {
+        fetch("http://localhost:8080/api/v1/admin/dashboard/demands", {
             method: "PUT",
             headers: {
                 "token": window.localStorage.getItem("token"),
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                rdvId: id,
-                statusRdv: "Accepter"
+                id: id,
+                statusMedecin: "Accepter"
             })
         }).then((res) => {
             if (!res.ok) throw new Error();
-            setRendezVous(rendezVous.filter((rdv) => rdv.rdvId != id));
-            alert("Rendez vous accepté avec succés !");
+            setUsers(users.filter((rdv) => rdv.id != id));
+            alert("Medecin vous accepté avec succés !");
         }).catch(() => {
-            alert("Rendez vous non accepté !");
+            alert("Medecin vous non accepté !");
         })
     }
-    function refuserRendezVous(id, index) {
-        fetch("http://localhost:8080/api/v1/medecin/dashbaord/mesRdv", {
+    function refuserMedecins(id) {
+        fetch("http://localhost:8080/api/v1/admin/dashboard/demands", {
             method: "PUT",
             headers: {
                 "token": window.localStorage.getItem("token"),
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                rdvId: id,
-                statusRdv: "Rejeter"
+                id: id,
+                statusMedecin: "Rejeter"
             })
         }).then((res) => {
             if (!res.ok) throw new Error();
-            setRendezVous(rendezVous.filter((rdv) => rdv.rdvId != id));
-            alert("Rendez vous rejetté avec succés !");
+            setUsers(users.filter((rdv) => rdv.id != id));
+            alert("Medecin rejetté avec succés !");
         }).catch(() => {
-            alert("Rendez vous non rejetté !");
+            alert("Medecin vous non rejetté !");
         })
     }
     //rdvId , statusRdv , nom , prenom , telephone , email , dateRdv , heureRdv
     return (
         <>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                <Tab label="Demandes Rendez vous" />
-                <Tab label="Rendez vous A venir" />
-                <Tab label="Details du profile" />
+                <Tab label="Demandes Inscriptions" />
             </Tabs>
             <CustomTabPanel value={value} index={0}>
                 <TableContainer component={Paper} sx={{ padding: "50px" }}>
                     <Table sx={{ minWidth: 650, border: "1px solid black" }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>rdvId</TableCell>
-                                <TableCell>dateRdv</TableCell>
-                                <TableCell>heureRdv</TableCell>
+                                <TableCell>id</TableCell>
+                                <TableCell>code medecin</TableCell>
+                                <TableCell>email</TableCell>
                                 <TableCell>nom</TableCell>
                                 <TableCell>prenom</TableCell>
-                                <TableCell>telephone</TableCell>
-                                <TableCell>email</TableCell>
+                                <TableCell>specialites</TableCell>
+                                <TableCell>address</TableCell>
                                 <TableCell>action</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rendezVous != null && rendezVous.map((row, index) => (
+                            {users != null && users.map((row, index) => (
                                 <TableRow
                                     key={row.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                    <TableCell>{row.rdvId}</TableCell>
-                                    <TableCell>{row.dateRdv}</TableCell>
-                                    <TableCell>{row.heureRdv}</TableCell>
+                                    <TableCell>{row.id}</TableCell>
+                                    <TableCell>{row.codeOrdreMedecin}</TableCell>
+                                    <TableCell>{row.login}</TableCell>
                                     <TableCell>{row.nom}</TableCell>
                                     <TableCell>{row.prenom}</TableCell>
-                                    <TableCell>{row.telephone}</TableCell>
-                                    <TableCell>{row.email}</TableCell>
+                                    <TableCell>{row.specialite}</TableCell>
+                                    <TableCell>{row.adresscabinet}</TableCell>
                                     <TableCell>
                                         <Row gap={"10px"}>
                                             <Button style={{ fontSize: "16px" }} varient={"good"} text={"accepter"} onclick={() => {
-                                                accepterRendezVous(row.rdvId, index);
+                                                accepterMedecin(row.id);
                                             }} />
                                             <Button style={{ fontSize: "16px" }} varient={"highlight"} text={"refuser"} onclick={() => {
-                                                refuserRendezVous(row.rdvId, index);
+                                                refuserMedecins(row.id);
                                             }} /></Row>
                                     </TableCell>
                                 </TableRow>
@@ -183,7 +181,7 @@ export default function MesRendezVousMedecin() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rendezVous != null && rendezVous.map((row) => (
+                            {users != null && users.map((row) => (
                                 <TableRow
                                     key={row.name}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -203,8 +201,8 @@ export default function MesRendezVousMedecin() {
                 </TableContainer >
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-                Item Three
+                à ajouter
             </CustomTabPanel>
-
-        </>);
+        </>
+    )
 }

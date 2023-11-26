@@ -31,7 +31,6 @@ export default function SignUpMedecinForm() {
                 return res.text();
             }).then((data) => {
                 alert("Demande effectué avec succés!");
-                alert(data);
                 window.localStorage.setItem("token", data);
                 window.location.assign("/");
             }).catch((error) => {

@@ -6,7 +6,7 @@ export default function NavBarButtons() {
 
     function signout() {
         window.localStorage.removeItem("token");
-        window.location.reload();
+        window.location.assign("/");
     }
 
     const unauthorized_buttons = [
@@ -32,7 +32,7 @@ export default function NavBarButtons() {
     )
 
     const admin_buttons = [
-        { text: "Espace admin", varient: "main", href: "/medecin/monespace" }
+        { text: "Espace admin", varient: "main", href: "/admin/monespace" }
         , { text: "Sign out", varient: "main", onclick: signout }
     ].map(
         props => <Button color="white" type="outlined" {...props} style={{ background: colors.navbar, borderRadius: "5px" }} />
